@@ -116,41 +116,54 @@
 
   <!-- Le jeu -->
   <script>
-    const lights = document.querySelectorAll('.light');
-    const car = document.getElementById('car');
-    const instruction = document.getElementById('instruction');
-    const game = document.getElementById('game');
-    const cv = document.getElementById('cv-container');
+  const lights = document.querySelectorAll('.light');
+  const car = document.getElementById('car');
+  const instruction = document.getElementById('instruction');
+  const game = document.getElementById('game');
+  const cv = document.getElementById('cv-container');
 
-    let position = 0;
-    let greenLight = false;
+  let position = 0;
+  let greenLight = false;
 
-    window.addEventListener('load', () => {
-      let delay = 0;
+  window.addEventListener('load', () => {
+    let delay = 0;
 
-      // anim feu depart script
-      setTimeout(() => { lights[0].style.opacity = 1; }, delay += 500);
-      setTimeout(() => { lights[1].style.opacity = 1; }, delay += 1000);
-      setTimeout(() => {
-        lights[2].style.opacity = 1;
-        greenLight = true;
-        instruction.textContent = "Appuyer sur espace et rendez-vous au prochain virage";
-      }, delay += 1000);
+    // anim feu depart script
+    setTimeout(() => { lights[0].style.opacity = 1; }, delay += 500);
+    setTimeout(() => { lights[1].style.opacity = 1; }, delay += 1000);
+    setTimeout(() => {
+      lights[2].style.opacity = 1;
+      greenLight = true;
+      instruction.textContent = "Appuyer sur espace ou sur l'écran et rendez-vous au prochain virage";
+    }, delay += 1000);
+  });
+
+  // anim emoji voiture (gauche -> droite)
+  window.addEventListener('keydown', (e) => {
+    if (greenLight && e.code === "Space") {
+      advanceCar();
+    }
+  });
+
+  // ajout compatibilité mobile
+  ["click", "touchstart", "pointerdown"].forEach(evt => {
+    car.addEventListener(evt, (e) => {
+      e.preventDefault();
+      if (greenLight) advanceCar();
     });
+  });
 
-    // anim emoji voiture (gauche -> droite)
-    window.addEventListener('keydown', (e) => {
-      if (greenLight && e.code === "Space") {
-        position += 20;
-        car.style.left = position + "px";
+  function advanceCar() {
+    position += 20;
+    car.style.left = position + "px";
 
-        if (position >= 500) {
-          game.style.display = 'none';
-          cv.style.display = 'block';
-        }
-      }
-    });
-  </script>
+    if (position >= 500) {
+      game.style.display = 'none';
+      cv.style.display = 'block';
+    }
+  }
+</script>
+
 
 </body>
 </html>
