@@ -146,12 +146,13 @@
   });
 
   // ajout compatibilité mobile
-  ["click", "touchstart", "pointerdown"].forEach(evt => {
-    car.addEventListener(evt, (e) => {
-      e.preventDefault();
-      if (greenLight) advanceCar();
-    });
+   ["click", "touchstart", "pointerdown"].forEach(evt => {
+  window.addEventListener(evt, (e) => {
+    if (greenLight) advanceCar();
   });
+  });
+
+
 
   function advanceCar() {
     position += 20;
