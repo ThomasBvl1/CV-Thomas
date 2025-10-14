@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Thomas">
+  <title>CV – Thomas BOUVAREL</title>
+  <link rel="stylesheet" href="./css/csscvf1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+  <!-- anim feu de depart -->
+  <div id="game">
+    <div class="lights">
+      <div class="light red"></div>
+      <div class="light yellow"></div>
+      <div class="light green"></div>
+    </div>
+
+    <div class="track">
+      <div id="car">🏎️</div>
+      <div class="finish">🏁</div>
+    </div>
+
+    <p id="instruction">Attends le feu vert</p>
+  </div>
+
+  <!-- CV apres anim course -->
+  <div id="cv-container">
+    <header class="dashboard">
+      <h1>Thomas BOUVAREL</h1>
+      <p>Technicien Réseau </p>
+
+      <div class="ranking">
+        <h2>Classement du CV</h2>
+        <ul>
+          <li class="first"><a href="#depart"><span>1</span> Départ</a></li>
+          <li class="second"><a href="#formation"><span>2</span> Formation</a></li>
+          <li class="third"><a href="#experience"><span>3</span> Expérience</a></li>
+          <li><a href="#competence"><span>4</span> Compétences</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section id="depart">
+        <h2>Départ</h2>
+        <p> Après une formation de Technicien d’Assistance en Informatique (TAI), je suis actuelement à la recherche d'une alternance dans le cadre d’un BTS SIO, option SISR. Passionné par le métier de l’informatique, je suis motivé à mettre mes compétences au service d’une entreprise et à développer mes connaissances dans ce domaine.</p>
+      </section>
+
+      <section id="formation">
+        <h2>Formation</h2>
+        <ul>
+        <h3>Certification complémentaire cybersecurité niveau 4 mention AB</h3>
+        <p>GRETA Ardeche-Drôme 2024-2025</p>
+        <p>37 Rue Barthélémy de Laffemas, 26000 Valence, France</p>
+        <h3>TAI (Technicien Assistant Informatique)</h3>
+        <p>GRETA Ardeche-Drôme 2024-2025</p>
+        <p>37 Rue Barthélémy de Laffemas, 26000 Valence, France</p> 
+        <h3>BAC Pro Cuisine</h3>
+        <p>Lycée hotelier Bellerive</p>
+        <p> 1 quai Frédéric Mistral, 38200 Vienne, France</p>
+        </ul>       
+      </section>
+
+      <section id="experience">
+        <h2>Expérience</h2>
+        <ul>
+        <h3> Alternant Technicien d'assistance en informatique</h3>
+        <p> D'octobre 2024 à juillet 2025 Yziact</p>
+        <p> 30 Rue Maryse Bastié, 26760 Beaumont-lès-Valence</p>
+        <p><li> Installation et configuration d’ordinateurs et de micro-ordinateurs</li></p>
+        <p><li> Mise en place de solutions de sauvegarde avec Nextcloud</li></p>
+        <p><li> Gestion de la téléphonie IP avec un serveur Asterisk</li></p>
+        <p><li> Aide aux utilisateurs</li></p>
+        <h3>Cuisinier</h3>
+        <p> De janvier 2022 à septembre 2024 Domaine golf Albon</p>
+        <p> 410 Senaud, 26140 Albon</p>
+        <p><li> Création et élaboration de menus et de plats</li></p>  
+        <p><li> Gestion des stocks et suivi des produits</li></p>
+        <p><li> Gestion du personnel</li></p>
+        <p><li> Suivi et création de recettes</li></p>     
+        </ul>
+      </section>
+
+      <section id="competence">
+        <h2>Compétences</h2>
+        <ul>
+        <p><li> Mise en place de firewall avec pfSense</li></p>
+        <p><li> Gestion de parc informatique avec GLPI</li></p>
+        <p><li> Gestion de serveur Active Directory, DNS, DHCP, GPO</li></p>
+        <p><li> Aide à l'utilisateur</li></p>
+        </ul> 
+      </section>
+    </main>
+
+    <footer>
+  <p>
+    Contact : 
+    <a href="mailto:thomas.bouvarel1@gmail.com">
+      <i class="fa-solid fa-envelope"></i> thomas.bouvarel1@gmail.com
+    </a> | 
+    <a href="https://www.linkedin.com/in/thomas-bouvarel-a0213034b" target="_blank">
+      <i class="fa-brands fa-linkedin"></i> LinkedIn
+    </a> | 
+    <a href="https://github.com/ton-profil-github" target="_blank">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+  </p>
+</footer>
+
+  </div>
+
+  <!-- Le jeu -->
+  <script>
+    const lights = document.querySelectorAll('.light');
+    const car = document.getElementById('car');
+    const instruction = document.getElementById('instruction');
+    const game = document.getElementById('game');
+    const cv = document.getElementById('cv-container');
+
+    let position = 0;
+    let greenLight = false;
+
+    window.addEventListener('load', () => {
+      let delay = 0;
+
+      // anim feu depart script
+      setTimeout(() => { lights[0].style.opacity = 1; }, delay += 500);
+      setTimeout(() => { lights[1].style.opacity = 1; }, delay += 1000);
+      setTimeout(() => {
+        lights[2].style.opacity = 1;
+        greenLight = true;
+        instruction.textContent = "Appuyer sur espace et rendez-vous au prochain virage";
+      }, delay += 1000);
+    });
+
+    // anim emoji voiture (gauche -> droite)
+    window.addEventListener('keydown', (e) => {
+      if (greenLight && e.code === "Space") {
+        position += 20;
+        car.style.left = position + "px";
+
+        if (position >= 500) {
+          game.style.display = 'none';
+          cv.style.display = 'block';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+ <!-- il reste a ajouter adresse mail telepone en utilisent href ajouter lin github aussi -->

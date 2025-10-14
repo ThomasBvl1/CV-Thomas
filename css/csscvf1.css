@@ -1,0 +1,166 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  background: #111;
+  color: #eee;
+  overflow-x: hidden;
+}
+
+/* === Écran de départ === */
+#game {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.lights {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 3rem;
+}
+
+.light {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #333;
+  opacity: 0.3;
+  transition: opacity 0.4s;
+}
+
+.red { background: red; }
+.yellow { background: yellow; }
+.green { background: green; }
+
+.track {
+  position: relative;
+  width: 600px;
+  height: 80px;
+  background: #222;
+  margin: 0 auto;
+  border-radius: 40px;
+  overflow: hidden;
+  border: 2px solid #444;
+}
+
+/* === Voiture === */
+#car {
+  position: absolute;
+  left: 0; /* départ à gauche */
+  top: 25px;
+  font-size: 2rem;
+  transform: scaleX(-1); /* inverse horizontalement l’emoji */
+  transition: left 0.1s;
+}
+
+.finish {
+  position: absolute;
+  right: 10px; /* ligne d’arrivée à droite */
+  top: 25px;
+  font-size: 2rem;
+}
+
+#instruction {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+/* === CV masqué au départ === */
+#cv-container {
+  display: none;
+}
+
+/* === Style du CV === */
+header.dashboard {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(90deg, #900, #111);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+/* Classement F1 */
+.ranking {
+  margin: 2rem auto;
+  width: 250px;
+  text-align: left;
+}
+
+.ranking h2 {
+  margin-bottom: 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.ranking ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid #333;
+}
+
+.ranking li {
+  border-bottom: 1px solid #333;
+}
+
+.ranking li:last-child {
+  border-bottom: none;
+}
+
+.ranking a {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: #eee;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.ranking a span {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+  margin-right: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  color: #fff;
+  background: #222;
+}
+
+.ranking li.first a span { background: #ffd700; }
+.ranking li.second a span { background: #c0c0c0; }
+.ranking li.third a span { background: #cd7f32; }
+
+.ranking a:hover {
+  background: #ff0000;
+  color: #fff;
+}
+
+main {
+  padding: 2rem;
+}
+
+h2 {
+  border-left: 4px solid red;
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+section {
+  margin-top: 4rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #222;
+  font-size: 0.9rem;
+}
